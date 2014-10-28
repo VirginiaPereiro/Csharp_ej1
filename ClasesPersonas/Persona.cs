@@ -9,6 +9,9 @@ namespace ClasesPersonas
 {
     public abstract class Persona
         //la marcamos como abstracta, por lo que heredarán de esta clase las otras clases que queramos
+        //nunca vamos a crear objetos de tipo persona
+        //cuando quiero que sea la base para lo demás le pongo abstracto
+        //podré crear métodos abstractos
         //las clases se crean por defecto como privadas, por lo que hay que poner public
         //tiene que ser pública sino es no usable
         //almacena el estado de la clase
@@ -19,7 +22,7 @@ namespace ClasesPersonas
         //queremos los años en días
         private int _edad;//atributo de instancia
 
-        protected int _2edad;
+        protected int _2edad;//público a nivel de herencia y privado fuera de la estructura de herencia
 
         public static int AnyoActual = 2014;//todas las personas comparten esta propiedad, ya que la hemos declarado como static
 
@@ -30,7 +33,7 @@ namespace ClasesPersonas
             AnyoActual += n;
         }
 
-        public int Edad//propiedad
+        public int Edad//propiedad, aquí se está usando encapsulación
         {
             get { return _edad; }
             set { _edad = value*365; }
@@ -44,6 +47,7 @@ namespace ClasesPersonas
         //poniendo prop se crea ya sóla la clase, así creamos las propiedades de la clase
         //public int Edad { get; set; } //si queremos que el get o el set sea privado se pone delante private
         public String Nombre { get; set; }
+        // public String Nombre { get; private set; }//para establecer el valor no habrá permiso, sólo uno de los dos podrá ser privado
 
         //si no defino el constructor se crea el de por defecto, pero si creo uno me cargo el de por defecto
         //guardo en memoria
@@ -58,12 +62,12 @@ namespace ClasesPersonas
         }
 
         //creamos un método
-        public void Detalles()
+        public virtual void Detalles()
         {
             Console.WriteLine("Nombre: {0} Edad: {1}",Nombre,Edad);
         }
 
-        //sobrecargamos el método de Detalles y le ponemos dos parámetros opcionales a unaLinea y a anios
+        //sobrecargamos el método de Detalles y le ponemos dos parámetros opcionales a unaLinea y a anios, porque ya le estamos poniendo un valor
         public void Detalles(int extra, bool unaLinea = true, bool anios = false)
         {
             if (anios)

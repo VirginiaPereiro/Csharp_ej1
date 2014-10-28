@@ -30,9 +30,9 @@ namespace HolaMundoCS
 
             p2.Detalles();
             Persona.IncrementarAnyoActual(8);//llamamos al método estático
-            p.Detalles(60,anios:true);
+            p.Detalles(60,anios:true);//no sigo el orden natural, me he saltado uno de los parámetros, por eso llamamos así al método
             Operaciones.Sumar(5, 5);//una clase estática con su método estático
-            Console.ReadLine();
+            Console.ReadLine();//hasta que no de un intro podré leer lo que sale por consola
         }
     }
 }
